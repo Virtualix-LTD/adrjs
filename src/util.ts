@@ -12,20 +12,20 @@ Run each of them with -h to get the help page.`)
 export function printHelp(page: COMMANDS) {
 	const initText = `
 NAME
-    npx adr init - Initialises a folder which will hold your Architecture
+    npx adrjs init - Initialises a folder which will hold your Architecture
                    Decision Records.
 
 SYNOPSIS
-    npx adr init PATH
+    npx adrjs init PATH
 
 DESCRIPTION
     A textual description of the functioning of the command or function.
 
 EXAMPLES
-    npx adr init docs/adr
+    npx adrjs init docs/adr
         Initialises an adr database under 'docs/adr'
 
-    npx adr init "docs/path with spaces"
+    npx adrjs init "docs/path with spaces"
         Initialises an adr database under '"docs/path with spaces"'
 
 EXIT STATUS
@@ -33,7 +33,7 @@ EXIT STATUS
     1 - Usage or syntax error.
 
 SEE ALSO
-    npx adr add
+    npx adrjs new
 BUGS
     List known bugs.
 AUTHOR

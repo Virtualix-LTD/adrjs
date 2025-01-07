@@ -1,6 +1,6 @@
 {
-	"name": "node-adr",
-	"description": "A adr-cli implementation for Node with a focus on simplicity.",
+	"name": "adrjs",
+	"description": "An adr-tools implementation for Node with a focus on simplicity.",
 	"version": "0.0.1",
 	"main": "index.js",
 	"license": "MIT",
@@ -19,7 +19,7 @@
 	"homepage": "https://github.com/Virtualix-LTD/node-adr",
 	"type": "commonjs",
 	"bin": {
-		"node-adr": "build/index.js"
+		"adrjs": "build/index.js"
 	},
 	"scripts": {
 		"clean": "rmdir build dist /s /q",
