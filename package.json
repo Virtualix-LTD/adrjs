@@ -18,7 +18,9 @@
 	},
 	"homepage": "https://github.com/Virtualix-LTD/node-adr",
 	"type": "commonjs",
-	"bin": "build/index.js",
+	"bin": {
+		"node-adr": "build/index.js"
+	},
 	"scripts": {
 		"clean": "rmdir build dist /s /q",
 		"build": "tsc"
