@@ -1,17 +1,31 @@
 {
-  "name": "node-adr",
-  "version": "0.0.1",
-  "main": "index.js",
-  "license": "MIT",
-  "type": "commonjs",
-  "bin": "build/index.js",
-  "scripts": {
-    "clean": "rmdir build dist /s /q",
-    "build": "tsc"
-  },
-  "private": false,
-  "devDependencies": {
-    "@types/node": "^22.10.5",
-    "typescript": "^5.7.2"
-  }
+	"name": "node-adr",
+	"description": "A adr-cli implementation for Node with a focus on simplicity.",
+	"version": "0.0.1",
+	"main": "index.js",
+	"license": "MIT",
+	"author": {
+		"name": "Tony Klinakis",
+		"email": "node-adr@virtualix.co.uk",
+		"url": "https://www.virtualix.co.uk"
+	},
+	"bugs": {
+		"url": "https://github.com/Virtualix-LTD/node-adr/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/Virtualix-LTD/node-adr.git"
+	},
+	"homepage": "https://github.com/Virtualix-LTD/node-adr",
+	"type": "commonjs",
+	"bin": "build/index.js",
+	"scripts": {
+		"clean": "rmdir build dist /s /q",
+		"build": "tsc"
+	},
+	"private": false,
+	"devDependencies": {
+		"@types/node": "^22.10.5",
+		"typescript": "^5.7.2"
+	}
 }
