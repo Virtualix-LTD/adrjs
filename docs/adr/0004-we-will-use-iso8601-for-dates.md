@@ -1,4 +1,4 @@
-# 0004. Use ISO-8601 for dates
+# 0004. We will use ISO-8601 for dates
 
 Date: 2025-01-07
 
