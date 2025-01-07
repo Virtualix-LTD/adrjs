@@ -4,6 +4,12 @@
 	"version": "0.0.2-next.0",
 	"main": "index.js",
 	"license": "MIT",
+	"keywords": [
+		"adr",
+		"typescript",
+		"cli",
+		"architecture decision record"
+	],
 	"author": {
 		"name": "Tony Klinakis",
 		"email": "adrjs@virtualix.co.uk",
