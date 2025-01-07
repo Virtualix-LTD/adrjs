@@ -1,6 +1,7 @@
 import fs from "fs";
 import {CONFIG_FILE} from "./util";
 import {DECISION_TEMPLATE} from "./templates";
+import {spawnSync} from "child_process";
 
 export function createRecord() {
 	const adrLocation = fs.readFileSync(CONFIG_FILE, {encoding: "utf-8"}).trim();
@@ -10,6 +11,8 @@ export function createRecord() {
 	const filename = genFileName(index, title);
 
 	fs.writeFileSync(`${adrLocation}/${filename}`, compileTemplate(index, title), {encoding: "utf-8"})
+
+	spawnSync(`eval $EDITOR ${adrLocation}/${filename}`)
 }
 
 function compileTemplate(index: number, title: string, date = new Date()) {
