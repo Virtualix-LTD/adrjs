@@ -28,6 +28,9 @@
 	"engines": {
 		"node": "^20"
 	},
+	"files": [
+		"build"
+	],
 	"private": false,
 	"devDependencies": {
 		"@types/node": "^22.10.5",
