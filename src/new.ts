@@ -1,5 +1,6 @@
 import fs from "fs";
 import {CONFIG_FILE} from "./util";
+import {DECISION_TEMPLATE} from "./templates";
 
 export function createRecord() {
 	const adrLocation = fs.readFileSync(CONFIG_FILE, {encoding: "utf-8"}).trim();
@@ -8,7 +9,14 @@ export function createRecord() {
 	const title = extractDecisionTitle(process.argv);
 	const filename = genFileName(index, title);
 
-	fs.appendFileSync(`${adrLocation}/${filename}`, "foo", {encoding: "utf-8"})
+	fs.writeFileSync(`${adrLocation}/${filename}`, compileTemplate(index, title), {encoding: "utf-8"})
+}
+
+function compileTemplate(index: number, title: string, date = new Date()) {
+	return DECISION_TEMPLATE
+		.replace("{{NUMBER}}", formatIndex(index))
+		.replace("{{TITLE}}", title)
+		.replace("{{DATE}}", formatDate(date));
 }
 
 function countRecords(adrLocation: string): number {
@@ -16,10 +24,19 @@ function countRecords(adrLocation: string): number {
 	return dircontents.length;
 }
 
+function formatIndex(index: number) {
+	return `${index}`.padStart(4, '0');
+}
+
+function formatDate(date: Date) {
+	const month = `${(date.getMonth() + 1)}`.padStart(2, '0');
+	const day = `${date.getDate()}`.padStart(2, '0');
+	return `${date.getFullYear()}-${month}-${day}`;
+}
+
 function genFileName(index: number, title: string) {
-	const paddedIndex = `${index}`.padStart(4, '0');
 	const filename = title.replace(" ", "-").toLocaleLowerCase();
-	return `${paddedIndex}-${filename}.md`
+	return `${formatIndex(index)}-${filename}.md`
 }
 
 function extractDecisionTitle(cliargs: string[]) {
