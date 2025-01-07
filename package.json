@@ -6,17 +6,17 @@
 	"license": "MIT",
 	"author": {
 		"name": "Tony Klinakis",
-		"email": "node-adr@virtualix.co.uk",
+		"email": "adrjs@virtualix.co.uk",
 		"url": "https://www.virtualix.co.uk"
 	},
 	"bugs": {
-		"url": "https://github.com/Virtualix-LTD/node-adr/issues"
+		"url": "https://github.com/Virtualix-LTD/adrjs/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git://github.com/Virtualix-LTD/node-adr.git"
+		"url": "git://github.com/Virtualix-LTD/adrjs.git"
 	},
-	"homepage": "https://github.com/Virtualix-LTD/node-adr",
+	"homepage": "https://github.com/Virtualix-LTD/adrjs",
 	"type": "commonjs",
 	"bin": {
 		"adrjs": "build/index.js"
