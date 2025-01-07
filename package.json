@@ -23,6 +23,9 @@
 		"clean": "rmdir build dist /s /q",
 		"build": "tsc"
 	},
+	"engines": {
+		"node": "^20"
+	},
 	"private": false,
 	"devDependencies": {
 		"@types/node": "^22.10.5",
