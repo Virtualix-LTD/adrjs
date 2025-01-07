@@ -1,3 +1,5 @@
+import fs from "fs";
+
 export type COMMANDS = "init" | "add";
 
 export const CONFIG_FILE = ".adr-dir"
@@ -48,4 +50,27 @@ COPYRIGHT
 			console.error("foo");
 
 	}
+}
+
+export function readFolderLocation(){
+	return fs.readFileSync(CONFIG_FILE, {encoding: "utf-8"}).trim();
+}
+
+export function formatDate(date: Date) {
+	const month = `${(date.getMonth() + 1)}`.padStart(2, '0');
+	const day = `${date.getDate()}`.padStart(2, '0');
+	return `${date.getFullYear()}-${month}-${day}`;
+}
+
+export function formatIndex(index: number) {
+	return `${index}`.padStart(4, '0');
+}
+
+export function countRecords(adrLocation: string): number {
+	const dircontents = fs.readdirSync(adrLocation);
+	return dircontents.length;
+}
+
+export function joinArrayIntoString(args: string[], startFrom = 3) {
+	return args.slice(startFrom).join(" ");
 }
