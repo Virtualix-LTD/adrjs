@@ -52,7 +52,7 @@ COPYRIGHT
 	}
 }
 
-export function readFolderLocation(){
+export function readFolderLocation() {
 	return fs.readFileSync(CONFIG_FILE, {encoding: "utf-8"}).trim();
 }
 
@@ -73,4 +73,13 @@ export function countRecords(adrLocation: string): number {
 
 export function joinArrayIntoString(args: string[], startFrom = 3) {
 	return args.slice(startFrom).join(" ");
+}
+
+export function genFileName(index: number, title: string) {
+	const filename = title
+		.replace(/[^A-zÀ-ú\d\s]+/gi, "")
+		.trim()
+		.replace(/\s+/g, "-")
+		.toLocaleLowerCase();
+	return `${formatIndex(index)}-${filename}.md`
 }

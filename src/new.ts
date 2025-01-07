@@ -1,5 +1,5 @@
 import fs from "fs";
-import {countRecords, formatDate, formatIndex, joinArrayIntoString, readFolderLocation} from "./util";
+import {countRecords, formatDate, formatIndex, genFileName, joinArrayIntoString, readFolderLocation} from "./util";
 import {DECISION_TEMPLATE} from "./templates";
 import {spawnSync} from "child_process";
 
@@ -21,9 +21,3 @@ function compileTemplate(index: number, title: string, date = new Date()) {
 		.replace("{{TITLE}}", title)
 		.replace("{{DATE}}", formatDate(date));
 }
-
-function genFileName(index: number, title: string) {
-	const filename = title.replace(" ", "-").toLocaleLowerCase();
-	return `${formatIndex(index)}-${filename}.md`
-}
-
