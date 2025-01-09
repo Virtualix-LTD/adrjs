@@ -67,8 +67,10 @@ export function formatIndex(index: number) {
 }
 
 export function countRecords(adrLocation: string): number {
-	const dircontents = fs.readdirSync(adrLocation);
-	return dircontents.length;
+	return fs.readdirSync(adrLocation)
+		// ignore dotfiles
+		.filter(path => path.indexOf('.') !== 0)
+		.length;
 }
 
 export function joinArrayIntoString(args: string[], startFrom = 3) {
