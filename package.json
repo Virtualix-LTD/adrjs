@@ -28,6 +28,7 @@
 		"adrjs": "build/index.js"
 	},
 	"scripts": {
+		"postversion": "node ./build-tools/update-version.js",
 		"clean": "rmdir build dist /s /q",
 		"build": "tsc"
 	},

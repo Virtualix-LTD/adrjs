@@ -1,11 +1,13 @@
 #!/usr/bin/env node
-import {printInvalidCommand} from "./util";
+import {COMMANDS, printInvalidCommand} from "./util";
 import {initProject} from "./init";
 import {createRecord} from "./new";
+import {getVersion} from "./version";
 
-const commands = [
+const commands: COMMANDS[] = [
 	"init",
 	"new",
+	"version",
 ]
 
 const commandArg = process.argv[2]?.trim().toLocaleLowerCase();
@@ -16,6 +18,9 @@ switch (commandArg) {
 		break;
 	case "new":
 		createRecord();
+		break;
+	case "version":
+		getVersion();
 		break;
 	default:
 		printInvalidCommand(commands);

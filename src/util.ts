@@ -1,6 +1,6 @@
 import fs from "fs";
 
-export type COMMANDS = "init" | "add";
+export type COMMANDS = "init" | "new" | "version";
 
 export const CONFIG_FILE = ".adr-dir"
 
