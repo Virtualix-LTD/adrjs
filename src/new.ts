@@ -1,9 +1,9 @@
 import fs from 'fs';
-import { countRecords, formatDate, formatIndex, genFileName, joinArrayIntoString, readFolderLocation } from './util';
+import { countRecords, formatDate, formatIndex, genFileName, getFlags, readFolderLocation } from './util';
 import { DECISION_TEMPLATE } from './templates';
 import { spawnSync } from 'child_process';
 
-type DecisionDocument = {
+export type DecisionDocument = {
 	index: number;
 	filename: string;
 	title: string;
@@ -11,7 +11,8 @@ type DecisionDocument = {
 
 export function _createRecord(argv: string[], adrLocation: string): DecisionDocument {
 	const index = countRecords(adrLocation) + 1;
-	const title = joinArrayIntoString(argv);
+	const { args } = getFlags(argv.slice(3));
+	const title = args.join(' ');
 	const filename = genFileName(index, title);
 
 	return {

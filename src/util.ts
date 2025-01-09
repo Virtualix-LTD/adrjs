@@ -1,12 +1,12 @@
-import fs from "fs";
+import fs from 'fs';
 
-export type COMMANDS = "init" | "new" | "version";
+export type COMMANDS = 'init' | 'new' | 'version';
 
-export const CONFIG_FILE = ".adr-dir"
+export const CONFIG_FILE = '.adr-dir';
 
 export function printInvalidCommand(validCommands: string[]) {
 	console.error(`Invalid command. The list of valid commands is ${validCommands}.
-Run each of them with -h to get the help page.`)
+Run each of them with -h to get the help page.`);
 }
 
 export function printHelp(page: COMMANDS) {
@@ -40,20 +40,82 @@ AUTHOR
    Tony Klinakis, for Virtualix LTD.
 COPYRIGHT
     (c) 2025 MIT
-`
+`;
 
 	switch (page) {
-		case "init":
+		case 'init':
 			console.log(initText);
 			return;
 		default:
-			console.error("foo");
+			console.error('foo');
 
 	}
 }
 
+type Flag = 'append' | 'supersede';
+
+type ChangeFlag = {
+	flag: Flag;
+	index: number;
+}
+
+export type getFlagsType = {
+	flags: ChangeFlag[];
+	args: string[];
+}
+
+function getFlagType(str: string): Flag | undefined {
+	switch (str) {
+		case '-a':
+			return 'append';
+		case '-s':
+			return 'supersede';
+		default:
+			return undefined;
+	}
+}
+
+export function getFlags(arr: string[]): getFlagsType {
+	const flags: ChangeFlag[] = [];
+	const rest: string[] = [];
+
+	for (let i = 0; i < arr.length; i++) {
+		const flagType: Flag | undefined = getFlagType(arr[i]);
+
+		// console.log(`Considering ${arr[i]}`);
+
+		if (flagType === undefined) {
+			rest.push(arr[i]);
+			// console.log(`${i} No flag type`);
+			continue;
+		}
+
+		if (i + 1 >= arr.length) {
+			console.error(`Parameter ${i - 1} (the ${arr[-1]} flag) is missing a value (expecting a number).`);
+			process.exit(1);
+		}
+
+		i++;
+
+		const index = Number(arr[i]);
+
+		if (isNaN(index)) {
+			console.error(`Parameter ${i - 1} (after ${arr[-1]} flag) is not a number: Expected a number.`);
+			process.exit(1);
+		}
+
+		flags.push({
+			flag: flagType,
+			index,
+		});
+
+
+	}
+	return { flags, args: rest };
+}
+
 export function readFolderLocation() {
-	return fs.readFileSync(CONFIG_FILE, {encoding: "utf-8"}).trim();
+	return fs.readFileSync(CONFIG_FILE, { encoding: 'utf-8' }).trim();
 }
 
 export function formatDate(date: Date) {
@@ -73,15 +135,11 @@ export function countRecords(adrLocation: string): number {
 		.length;
 }
 
-export function joinArrayIntoString(args: string[], startFrom = 3) {
-	return args.slice(startFrom).join(" ");
-}
-
 export function genFileName(index: number, title: string) {
 	const filename = title
-		.replace(/[^A-zÀ-ú\d\s]+/gi, "")
+		.replace(/[^A-zÀ-ú\d\s]+/gi, '')
 		.trim()
-		.replace(/\s+/g, "-")
+		.replace(/\s+/g, '-')
 		.toLocaleLowerCase();
-	return `${formatIndex(index)}-${filename}.md`
+	return `${formatIndex(index)}-${filename}.md`;
 }
