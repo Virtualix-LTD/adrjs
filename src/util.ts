@@ -52,7 +52,7 @@ COPYRIGHT
 	}
 }
 
-type Flag = 'append' | 'supersede';
+type Flag = 'amend' | 'supersede';
 
 type ChangeFlag = {
 	flag: Flag;
@@ -67,7 +67,7 @@ export type getFlagsType = {
 function getFlagType(str: string): Flag | undefined {
 	switch (str) {
 		case '-a':
-			return 'append';
+			return 'amend';
 		case '-s':
 			return 'supersede';
 		default:

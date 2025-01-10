@@ -17,7 +17,7 @@ describe(getFlags.name, () => {
 			args: [],
 			flags: [{
 				index: 4,
-				flag: 'append',
+				flag: 'amend',
 			}, {
 				index: 4,
 				flag: 'supersede',
@@ -43,7 +43,7 @@ describe(getFlags.name, () => {
 			args: 'first second third'.split(' '),
 			flags: [{
 				index: 4,
-				flag: 'append',
+				flag: 'amend',
 			}, {
 				index: 4,
 				flag: 'supersede',
@@ -61,7 +61,7 @@ describe(getFlags.name, () => {
 			args: 'first second third'.split(' '),
 			flags: [{
 				index: 4,
-				flag: 'append',
+				flag: 'amend',
 			}, {
 				index: 4,
 				flag: 'supersede',
