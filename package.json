@@ -29,7 +29,7 @@
 		"adrjs": "build/index.js"
 	},
 	"scripts": {
-		"test": "jest -i",
+		"test": "jest -i .*.test.ts",
 		"postversion": "node ./build-tools/update-version.js",
 		"clean": "node ./build-tools/clean.js",
 		"build": "yarn run clean && tsc"
