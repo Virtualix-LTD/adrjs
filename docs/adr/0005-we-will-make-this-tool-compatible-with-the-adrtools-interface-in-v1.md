@@ -16,7 +16,6 @@ For major version 1, we will adopt the interface and features of
 [npryce/adr-tools][1]. Any breaks from the interface will happen on a new major
 version.
 
-
 ## Consequences
 This limits and sets the scope of what this tool sets out to achieve.
 

@@ -6,8 +6,8 @@ Many teams use a mix of operating systems and they need to use different tools
 to achieve the same job.
 
 For those teams that work with node, this package serves as a single command
-that can be added in `devDependencies`, and maintain a consistent experience
-across platforms.
+that can be added in `devDependencies`, or invoked via `npx`, and maintain a
+consistent experience across platforms.
 
 ## Usage
 
