@@ -6,6 +6,8 @@ Date: {{DATE}}
 
 Proposed | Accepted | Superseded
 
+{{AFFECTS}}
+
 ## Context
 The issue motivating this decision, and any context that influences or constrains the decision.
 

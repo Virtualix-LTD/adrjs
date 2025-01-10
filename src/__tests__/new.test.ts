@@ -80,6 +80,7 @@ describe(_createRecord.name, () => {
 			index: 1,
 			title: 'We will do Things with Mixed-Capitals -foo',
 			filename: '0001-we-will-do-things-with-mixedcapitals-foo.md',
+			flags: [],
 		};
 
 		const argv = 'npx adrjs new We will do Things with Mixed-Capitals -foo'.split(' ');

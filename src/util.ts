@@ -54,7 +54,7 @@ COPYRIGHT
 
 type Flag = 'amend' | 'supersede';
 
-type ChangeFlag = {
+export type ChangeFlag = {
 	flag: Flag;
 	index: number;
 }
@@ -140,4 +140,14 @@ export function genFileName(index: number, title: string) {
 		.replace(/\s+/g, '-')
 		.toLocaleLowerCase();
 	return `${formatIndex(index)}-${filename}.md`;
+}
+
+export function getMetadataFromContent(content: string) {
+	const match = /#\s*(\d+)\. (.*)\s*Date:\s+(\d{4}-\d{2}-\d{2})/gm.exec(content);
+	if (!match) {
+		throw new Error('Cannot find match');
+	}
+
+	const [_, index, title, date] = match;
+	return { index: Number(index), title, date: new Date(date) };
 }
