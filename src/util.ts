@@ -91,8 +91,7 @@ export function getFlags(arr: string[]): getFlagsType {
 		}
 
 		if (i + 1 >= arr.length) {
-			console.error(`Parameter ${i - 1} (the ${arr[-1]} flag) is missing a value (expecting a number).`);
-			process.exit(1);
+			throw new Error(`Parameter ${i - 1} (the ${arr[-1]} flag) is missing a value (expecting a number).`);
 		}
 
 		i++;
@@ -100,8 +99,7 @@ export function getFlags(arr: string[]): getFlagsType {
 		const index = Number(arr[i]);
 
 		if (isNaN(index)) {
-			console.error(`Parameter ${i - 1} (after ${arr[-1]} flag) is not a number: Expected a number.`);
-			process.exit(1);
+			throw new Error(`Parameter ${i - 1} (after ${arr[-1]} flag) is not a number: Expected a number.`);
 		}
 
 		flags.push({
