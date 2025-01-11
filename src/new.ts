@@ -5,9 +5,11 @@ import {
 	formatDate,
 	formatIndex,
 	genFileName,
+	getFileContents,
 	getFlags,
 	getMetadataFromContent,
 	readFolderLocation,
+	writeFile,
 } from './util';
 import { DECISION_TEMPLATE } from './templates';
 import { spawnSync } from 'child_process';
@@ -69,6 +71,10 @@ export function createRecord() {
 
 	fs.writeFileSync(`${adrLocation}/${filename}`, compileTemplate(index, title, flags, adrLocation), { encoding: 'utf-8' });
 
+	flags.forEach(({ index: oldIndex, flag }) => {
+		updatePreviousDecision(oldIndex, { index, flag }, adrLocation);
+	});
+
 	spawnSync(`eval $EDITOR ${adrLocation}/${filename}`);
 }
 
@@ -79,4 +85,24 @@ function compileTemplate(index: number, title: string, flags: ChangeFlag[], adrL
 		.replace('{{DATE}}', formatDate(date))
 		.replace('{{AFFECTS}}', compileFlagsTextActiveVoice(flags, adrLocation))
 		.replace(/^\n$/gm, '');
+}
+
+function updatePreviousDecision(index: number, { flag, index: changedBy }: ChangeFlag, adrLocation: string) {
+	const { filename } = getDecisionByIndex(index, adrLocation);
+	const {
+		filename: changedByFilename,
+		title,
+	} = getDecisionByIndex(changedBy, adrLocation);
+
+	const contents = getFileContents(filename, adrLocation);
+	const [firstPart, secondPart] = contents.split('## Context');
+	const verb = flag === 'amend' ? 'Amended By' : 'Superseded By';
+	const line = formatLinkText(verb, { index: changedBy, filename: changedByFilename, title, flags: [] });
+
+	const compiled = `${firstPart}${line}\n## Context${secondPart}`;
+	writeFile(filename, adrLocation, compiled);
+}
+
+function formatLinkText(verb: string, { index, title, filename }: DecisionDocument) {
+	return `* ${verb} [${formatIndex(index)} - ${title}](${filename})\n`;
 }

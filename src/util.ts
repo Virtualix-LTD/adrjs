@@ -151,3 +151,12 @@ export function getMetadataFromContent(content: string) {
 	const [_, index, title, date] = match;
 	return { index: Number(index), title, date: new Date(date) };
 }
+
+export function getFileContents(filename: string, folder: string): string {
+	return fs.readFileSync(`${folder}/${filename}`, { encoding: 'utf-8' });
+}
+
+export function writeFile(filename: string, folder: string, content: string) {
+	fs.writeFileSync(`${folder}/${filename}`, content, { encoding: 'utf-8' });
+}
+
