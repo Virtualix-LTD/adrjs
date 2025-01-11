@@ -1,6 +1,4 @@
 
 export function getVersion() {
-	console.log(VERSION);
+	console.log("VERSION_REPLACE");
 }
-
-const VERSION="VERSION_REPLACE";
