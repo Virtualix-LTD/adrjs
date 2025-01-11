@@ -43,7 +43,7 @@ Usage: adrjs [-h] version
 `.trim();
 
 export const defaultText = `
-Usage: adrjs [-h] (init|new|version)
+Usage: adrjs (init|new|version) [-h]
 
 -h  Show the help screen for each command.
 `.trim();

@@ -23,7 +23,7 @@ export function printHelp(page: COMMANDS | string) {
 			console.log(versionText);
 			return;
 		default:
-			console.error(defaultText);
+			console.log(defaultText);
 	}
 }
 
