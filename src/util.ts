@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { defaultText, initText, newText, versionText } from './templates';
 
 export type COMMANDS = 'init' | 'new' | 'version';
 
@@ -9,46 +10,20 @@ export function printInvalidCommand(validCommands: string[]) {
 Run each of them with -h to get the help page.`);
 }
 
-export function printHelp(page: COMMANDS) {
-	const initText = `
-NAME
-    npx adrjs init - Initialises a folder which will hold your Architecture
-                   Decision Records.
-
-SYNOPSIS
-    npx adrjs init PATH
-
-DESCRIPTION
-    A textual description of the functioning of the command or function.
-
-EXAMPLES
-    npx adrjs init docs/adr
-        Initialises an adr database under 'docs/adr'
-
-    npx adrjs init "docs/path with spaces"
-        Initialises an adr database under '"docs/path with spaces"'
-
-EXIT STATUS
-    0 - Successful program execution.
-    1 - Usage or syntax error.
-
-SEE ALSO
-    npx adrjs new
-BUGS
-    List known bugs.
-AUTHOR
-   Tony Klinakis, for Virtualix LTD.
-COPYRIGHT
-    (c) 2025 MIT
-`;
+export function printHelp(page: COMMANDS | string) {
 
 	switch (page) {
 		case 'init':
 			console.log(initText);
 			return;
+		case 'new':
+			console.log(newText);
+			return;
+		case 'version':
+			console.log(versionText);
+			return;
 		default:
-			console.error('foo');
-
+			console.error(defaultText);
 	}
 }
 
@@ -82,11 +57,8 @@ export function getFlags(arr: string[]): getFlagsType {
 	for (let i = 0; i < arr.length; i++) {
 		const flagType: Flag | undefined = getFlagType(arr[i]);
 
-		// console.log(`Considering ${arr[i]}`);
-
 		if (flagType === undefined) {
 			rest.push(arr[i]);
-			// console.log(`${i} No flag type`);
 			continue;
 		}
 

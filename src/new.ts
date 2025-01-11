@@ -23,7 +23,7 @@ export type DecisionDocument = {
 
 export function _createRecord(argv: string[], adrLocation: string): DecisionDocument {
 	const index = countRecords(adrLocation) + 1;
-	const { flags, args } = getFlags(argv.slice(3));
+	const { flags, args } = getFlags(argv);
 	const title = args.join(' ');
 	const filename = genFileName(index, title);
 
@@ -64,10 +64,10 @@ function compileFlagsTextActiveVoice(flags: ChangeFlag[], adrLocation: string) {
 	}).join('\n');
 }
 
-export function createRecord() {
+export function createRecord(argv: string[]) {
 	const adrLocation = readFolderLocation();
 
-	const { index, title, filename, flags } = _createRecord(process.argv, adrLocation);
+	const { index, title, filename, flags } = _createRecord(argv, adrLocation);
 
 	fs.writeFileSync(`${adrLocation}/${filename}`, compileTemplate(index, title, flags, adrLocation), { encoding: 'utf-8' });
 

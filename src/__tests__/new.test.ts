@@ -83,7 +83,7 @@ describe(_createRecord.name, () => {
 			flags: [],
 		};
 
-		const argv = 'npx adrjs new We will do Things with Mixed-Capitals -foo'.split(' ');
+		const argv = 'We will do Things with Mixed-Capitals -foo'.split(' ');
 		const result = _createRecord(argv, EMPTY_DIR);
 		expect(result).toEqual(expected);
 	});

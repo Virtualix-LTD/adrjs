@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { COMMANDS, printInvalidCommand } from './util';
+import { COMMANDS, printHelp, printInvalidCommand } from './util';
 import { initProject } from './init';
 import { createRecord } from './new';
 import { getVersion } from './version';
@@ -12,7 +12,12 @@ const commands: COMMANDS[] = [
 
 
 function run() {
-	const commandArg = process.argv[2]?.trim().toLocaleLowerCase();
+	const [commandArg, ...argv] = process.argv.slice(2);
+
+	if (argv[0] === '-h') {
+		printHelp(commandArg);
+		return;
+	}
 
 	try {
 		// noinspection ExceptionCaughtLocallyJS
@@ -21,7 +26,7 @@ function run() {
 				initProject();
 				break;
 			case 'new':
-				createRecord();
+				createRecord(argv);
 				break;
 			case 'version':
 				getVersion();
