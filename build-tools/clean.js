@@ -1,4 +1,8 @@
 #!/usr/bin/env node
-const fs = require("fs");
+const fs = require('fs');
 
-fs.rmSync("build", {recursive: true});
+try {
+	fs.rmSync('build', { recursive: true });
+} catch (e) {
+	// ignore failures, usually due to dir not being present
+}
