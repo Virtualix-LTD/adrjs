@@ -6,7 +6,7 @@ function exec(command: string) {
 
 
 describe('version', () => {
-	it('should print the current version when invoked with the "version" command', function() {
+	it('should print the current version when invoked with the "version" command', () => {
 		const stdout = exec('npx . version').trim();
 
 		expect(stdout).toEqual('VERSION_REPLACE');

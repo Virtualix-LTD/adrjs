@@ -11,7 +11,7 @@ describe(getFlags.name, () => {
 		expect(result).toEqual(expected);
 	});
 
-	it('should return flags if there are only flags', function() {
+	it('should return flags if there are only flags', () => {
 		const input = '-a 4 -s 4'.split(' ');
 		const expected: getFlagsType = {
 			args: [],
@@ -30,14 +30,14 @@ describe(getFlags.name, () => {
 		expect(result).toEqual(expected);
 	});
 
-	it('should return no flags and no args on an empty array', function() {
+	it('should return no flags and no args on an empty array', () => {
 		const expected = { args: [], flags: [] };
 		const result = getFlags([]);
 
 		expect(result).toEqual(expected);
 	});
 
-	it('should understand a mix of flags and title elements', function() {
+	it('should understand a mix of flags and title elements', () => {
 		//TODO this is wrong but it's the current behaviour, so we document it
 		const expected: getFlagsType = {
 			args: 'first second third'.split(' '),
@@ -56,7 +56,7 @@ describe(getFlags.name, () => {
 		expect(result).toEqual(expected);
 	});
 
-	it('should understand indices with leading zeros', function() {
+	it('should understand indices with leading zeros', () => {
 		const expected: getFlagsType = {
 			args: 'first second third'.split(' '),
 			flags: [{
@@ -75,7 +75,7 @@ describe(getFlags.name, () => {
 });
 
 describe(_createRecord.name, () => {
-	it('should create a record from argv', function() {
+	it('should create a record from argv', () => {
 		const expected: DecisionDocument = {
 			index: 1,
 			title: 'We will do Things with Mixed-Capitals -foo',
