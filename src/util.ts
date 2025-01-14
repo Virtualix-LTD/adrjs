@@ -1,5 +1,6 @@
 import fs from 'fs';
 import { defaultText, initText, newText, versionText } from './templates';
+import { DecisionDocument } from './new';
 
 export type COMMANDS = 'init' | 'new' | 'version';
 
@@ -99,10 +100,19 @@ export function formatIndex(index: number) {
 }
 
 export function countRecords(adrLocation: string): number {
-	return fs.readdirSync(adrLocation)
+	return getFilePaths(adrLocation)
 		// ignore dotfiles
 		.filter(path => path.indexOf('.') !== 0)
 		.length;
+}
+
+export function getFilePaths(location = readFolderLocation()) {
+	return _getFilePaths(fs.readdirSync(location));
+}
+
+export function _getFilePaths(paths: string[]) {
+	const regex = /^\d+.+\.md$/gi;
+	return paths.filter(file => file.match(regex));
 }
 
 export function genFileName(index: number, title: string) {
@@ -114,14 +124,22 @@ export function genFileName(index: number, title: string) {
 	return `${formatIndex(index)}-${filename}.md`;
 }
 
-export function getMetadataFromContent(content: string) {
+export function getMetadataFromFile(filename: string, location = readFolderLocation()): DecisionDocument {
+	const contents = getFileContents(filename, location);
+	return {
+		...getMetadataFromContent(contents),
+		filename,
+	};
+}
+
+export function getMetadataFromContent(content: string): Pick<DecisionDocument, 'index' | 'title' | 'date' | 'flags'> {
 	const match = /#\s*(\d+)\. (.*)\s*Date:\s+(\d{4}-\d{2}-\d{2})/gm.exec(content);
 	if (!match) {
 		throw new Error('Cannot find match');
 	}
 
 	const [_, index, title, date] = match;
-	return { index: Number(index), title, date: new Date(date) };
+	return { index: Number(index), title, date: new Date(date), flags: [] };
 }
 
 export function getFileContents(filename: string, folder: string): string {

@@ -36,6 +36,12 @@ Usage: adrjs new [options] DECISION-TITLE
                                    decision INDEX.
 `.trim();
 
+export const TOC_TEMPLATE=`
+# Architecture Decision Records
+
+{{TOC}}
+`.trim();
+
 export const versionText = `
 Usage: adrjs [-h] version
 

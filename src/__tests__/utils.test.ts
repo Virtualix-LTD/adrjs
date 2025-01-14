@@ -1,4 +1,4 @@
-import { genFileName, getMetadataFromContent } from '../util';
+import { _getFilePaths, genFileName, getMetadataFromContent } from '../util';
 import { renderedDecision } from './_fixtures';
 
 describe(genFileName.name, () => {
@@ -38,8 +38,36 @@ describe(getMetadataFromContent, () => {
 			index: 5,
 			title: 'We will make this tool compatible with the adr-tools interface in v1',
 			date: new Date('2025-01-07'),
+			flags: [],
 		};
 		const result = getMetadataFromContent(renderedDecision);
 		expect(result).toEqual(expected);
+	});
+});
+
+describe(_getFilePaths.name, () => {
+	const filenames = [
+		'0001-we-will use the mit license.md',
+		'0002-we-will not use external dependencies as much as possible.md',
+		'0003-we-will use semantic versioning.md',
+		'0004-we-will-use-iso8601-for-dates.md',
+		'0005-we-will-make-this-tool-compatible-with-the-adrtools-interface-in-v1.md',
+		'0006-we-will-rename-this-tool-to-adrjs.md',
+		'0007-we-will-use-git-tags-to-mark-releases.md',
+		'0008-we-will-use-git-branches-to-track-major-versions-in-case-we-ever-have-more-than-one.md',
+		'0009-we-will-keep-this-tool-compatible-with-the-three-major-operating-systems.md',
+		'0010-we-will-use-utf8-everywhere.md',
+		'0011-we-will-use-errors-instead-of-processexit.md',
+		'0012-we-will-adopt-the-anticode-code-of-conduct.md',
+		'0013-we-will-use-docopt-to-describe-our-cli-options.md',
+	];
+
+	it('should correctly parse valid filenames', function() {
+		const input = [
+			...filenames,
+			'foo', ' ', '.', '\n',
+		];
+
+		expect(_getFilePaths(input)).toEqual(filenames);
 	});
 });

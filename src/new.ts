@@ -19,7 +19,10 @@ export type DecisionDocument = {
 	filename: string;
 	title: string;
 	flags: ChangeFlag[];
+	date: Date;
 }
+
+export type PartialDecisionDocument = Pick<DecisionDocument, "title" | "filename" | "index">
 
 export function _createRecord(argv: string[], adrLocation: string): DecisionDocument {
 	const index = countRecords(adrLocation) + 1;
@@ -32,6 +35,7 @@ export function _createRecord(argv: string[], adrLocation: string): DecisionDocu
 		title,
 		filename,
 		flags,
+		date: new Date(Date.now()),
 	};
 }
 
@@ -45,13 +49,14 @@ function getDecisionByIndex(index: number, adrLocation: string): DecisionDocumen
 	}
 
 	const contents = fs.readFileSync(`${adrLocation}/${file}`, { encoding: 'utf-8' });
-	const { title } = getMetadataFromContent(contents);
+	const { title, date } = getMetadataFromContent(contents);
 
 	return {
 		index,
 		filename: file,
 		title,
 		flags: [],
+		date
 	};
 }
 
@@ -97,12 +102,12 @@ function updatePreviousDecision(index: number, { flag, index: changedBy }: Chang
 	const contents = getFileContents(filename, adrLocation);
 	const [firstPart, secondPart] = contents.split('## Context');
 	const verb = flag === 'amend' ? 'Amended By' : 'Superseded By';
-	const line = formatLinkText(verb, { index: changedBy, filename: changedByFilename, title, flags: [] });
+	const line = formatLinkText(verb, { index: changedBy, filename: changedByFilename, title });
 
 	const compiled = `${firstPart}${line}\n## Context${secondPart}`;
 	writeFile(filename, adrLocation, compiled);
 }
 
-function formatLinkText(verb: string, { index, title, filename }: DecisionDocument) {
+function formatLinkText(verb: string, { index, title, filename }: PartialDecisionDocument) {
 	return `* ${verb} [${formatIndex(index)} - ${title}](${filename})\n`;
 }

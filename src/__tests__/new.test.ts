@@ -81,6 +81,7 @@ describe(_createRecord.name, () => {
 			title: 'We will do Things with Mixed-Capitals -foo',
 			filename: '0001-we-will-do-things-with-mixedcapitals-foo.md',
 			flags: [],
+			date: new Date(),
 		};
 
 		const argv = 'We will do Things with Mixed-Capitals -foo'.split(' ');
