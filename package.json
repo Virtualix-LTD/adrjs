@@ -1,7 +1,7 @@
 {
 	"name": "adrjs",
 	"description": "An adr-tools implementation for Node with a focus on simplicity.",
-	"version": "0.0.2-next.6",
+	"version": "0.0.2-next.7",
 	"main": "index.js",
 	"license": "MIT",
 	"keywords": [
