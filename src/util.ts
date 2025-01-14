@@ -107,7 +107,7 @@ export function countRecords(adrLocation: string): number {
 
 export function genFileName(index: number, title: string) {
 	const filename = title
-		.replace(/[^A-zÀ-ú\d\s]+/gi, '')
+		.replace(/[^\p{L}\p{M}\d\s_']+/ugm, '')
 		.trim()
 		.replace(/\s+/g, '-')
 		.toLocaleLowerCase();

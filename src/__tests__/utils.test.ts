@@ -9,7 +9,7 @@ describe(genFileName.name, () => {
 		expect(result).toEqual(expected);
 	});
 
-	xit('should keep accented characters', () => {
+	it('should keep accented characters', () => {
 		const input = 'ĀÃȺ';
 		const expected = '0001-āãⱥ.md';
 		const result = genFileName(1, input);
