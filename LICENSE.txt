@@ -1,3 +1,5 @@
+# Software (ADRJS)
+
 Copyright (c) 2025 Virtualix LTD
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -17,3 +19,9 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
 OR OTHER DEALINGS IN THE SOFTWARE.
+
+# Logo (Owl)
+
+The logo is available under the CC BY-SA 4.0 license, which can be viewed at
+https://creativecommons.org/licenses/by-sa/4.0/
+The logo was found here: https://www.geeksvgs.com/id/38285
