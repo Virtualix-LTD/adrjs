@@ -121,3 +121,9 @@ Long, single-line code blocks should not wrap. They should horizontally scroll i
 ```
 The final element.
 ```
+
+# Decision Records for ADRJS
+
+{% for decision in site.data.adr %}
+* [{{ decision.index }} - {{ decision.title }}]({{ decision.url }})
+{% endfor %}
