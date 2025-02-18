@@ -126,8 +126,8 @@ The final element.
 
 Decisions taken in this project.
 
-<ul>
+<ol>
 {% for decision in site.data.adr %}
-<li><a href='{{ decision.url }}'>{{ decision.index }} - {{ decision.title }}</a></li>
+<li><a href='{{ decision.url }}'>{{ decision.title }}</a></li>
 {% endfor %}
-</ul>
+</ol>
