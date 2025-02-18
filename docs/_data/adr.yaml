@@ -1,0 +1,7 @@
+- title: We will use the MIT license
+  index: 0001
+  url: adr/0001-we-will%20use%20the%20mit%20license
+  
+- title: We will not use external dependencies as much as possible
+  index: 0002
+  url: adr/0002-we-will%20not%20use%20external%20dependencies%20as%20much%20as%20possible
