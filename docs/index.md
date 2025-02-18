@@ -124,6 +124,10 @@ The final element.
 
 # Decision Records for ADRJS
 
+Decisions taken in this project.
+
+<ul>
 {% for decision in site.data.adr %}
-* [{{ decision.index }} - {{ decision.title }}]({{ decision.url }})
+<li><a href='{{ decision.url }}'>{{ decision.index }} - {{ decision.title }}</a></li>
 {% endfor %}
+</ul>
