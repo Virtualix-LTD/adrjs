@@ -2,8 +2,7 @@
 layout: default
 ---
 
-ADRJS is a Node implementation of
-npryce's [adr-tools](https://github.com/npryce/adr-tools).
+ADRJS is a Node implementation of npryce's [adr-tools][npadr].
 
 Many teams use a mix of operating systems, and they need to use different tools
 to achieve the same job.
@@ -71,6 +70,8 @@ Get the tool version
 npx adrjs version
 ```
 
+---
+
 # Decision Records for ADRJS
 
 Decisions taken in this project.
@@ -81,8 +82,23 @@ Decisions taken in this project.
 {% endfor %}
 </ol>
 
+# Contributing
+
+Visit the [Issues][issues] section on this project's [Github page][gh] and open
+a Bug or a Feature Request. Make sure you read the [Code of Conduct][coc] - it's
+short and common sense. PRs are welcome. Security vulnerabilities will be 
+announced as they become known to us.
+
 # License
 
-The software and website are licensed under [MIT](https://mit-license.org/). The
-Owl logo was found at [GeekSVGs](https://www.geeksvgs.com/id/38285) and is
-licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+The software and website are licensed under [MIT][mit]. The
+Owl logo was found at [GeekSVGs][geeksvgs] and is
+licensed under [CC BY-SA 4.0][cclicense].
+
+[coc]: https://github.com/Virtualix-LTD/adrjs/blob/master/CODE_OF_CONDUCT.md
+[issues]: https://github.com/Virtualix-LTD/adrjs/issues
+[gh]: https://github.com/Virtualix-LTD/adrjs
+[mit]: https://mit-license.org/
+[geeksvgs]: https://www.geeksvgs.com/id/38285
+[cclicense]: https://creativecommons.org/licenses/by-sa/4.0/
+[npadr]: https://github.com/npryce/adr-tools
