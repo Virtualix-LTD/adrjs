@@ -1,6 +1,6 @@
-title: Minimal theme
-logo: /docs/assets/logo.svg
-description: Minimal is a theme for GitHub Pages.
-show_downloads: true
+title: ADR JS
+logo: https://raw.githubusercontent.com/Virtualix-LTD/adrjs/refs/heads/master/docs/assets/logo.svg
+description: Adrhitecture Decision Records for npx.
+show_downloads: false
 google_analytics:
 theme: jekyll-theme-minimal
