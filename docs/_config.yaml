@@ -4,6 +4,5 @@ description: Adrhitecture Decision Records for npx.
 show_downloads: true
 google_analytics:
 theme: jekyll-theme-minimal
-site:
-  github:
-    npmjs_url: https://www.npmjs.com/package/adrjs
+github:
+  npmjs_url: https://www.npmjs.com/package/adrjs
