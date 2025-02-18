@@ -5,3 +5,37 @@
 - title: We will not use external dependencies as much as possible
   index: 0002
   url: adr/0002-we-will%20not%20use%20external%20dependencies%20as%20much%20as%20possible
+
+- title: We will use semantic versioning
+  index: 0003
+  url: adr/0003-we-will%20use%20semantic%20versioning
+- title: We will use ISO-8601 for dates
+  index: 0004
+  url: adr/0004-we-will-use-iso8601-for-dates
+- title: We will make this tool compatible with the adr-tools interface in v1
+  index: 0005
+  url: adr/0005-we-will-make-this-tool-compatible-with-the-adrtools-interface-in-v1
+- title: We will rename this tool to adrjs
+  index: 0006
+  url: adr/0006-we-will-rename-this-tool-to-adrjs
+- title: We will use git tags to mark releases
+  index: 0007
+  url: adr/0007-we-will-use-git-tags-to-mark-releases
+- title: We will use git branches to track major versions in case we ever have more than one
+  index: 0008
+  url: adr/0008-we-will-use-git-branches-to-track-major-versions-in-case-we-ever-have-more-than-one
+- title: We will keep this tool compatible with the three major operating systems
+  index: 0009
+  url: adr/0009-we-will-keep-this-tool-compatible-with-the-three-major-operating-systems
+- title: We will use UTF-8 everywhere
+  index: 0010
+  url: adr/0010-we-will-use-utf8-everywhere
+- title: We will use Errors instead of process.exit
+  index: 0011
+  url: adr/0011-we-will-use-errors-instead-of-processexit
+- title: We will adopt the Anticode Code of Conduct
+  index: 0012
+  url: adr/0012-we-will-adopt-the-anticode-code-of-conduct
+- title: We will use docopt to describe our CLI options
+  index: 0013
+  url: adr/0013-we-will-use-docopt-to-describe-our-cli-options
