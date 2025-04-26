@@ -6,6 +6,8 @@ export type COMMANDS = 'init' | 'new' | 'version';
 
 export const CONFIG_FILE = '.adr-dir';
 
+export const EXEC_NAME = 'adrjs';
+
 export function printInvalidCommand(validCommands: string[]) {
 	console.error(`Invalid command. The list of valid commands is ${validCommands}.
 Run each of them with -h to get the help page.`);

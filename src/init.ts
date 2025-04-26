@@ -1,5 +1,5 @@
 import { argv } from 'node:process';
-import { CONFIG_FILE, printHelp } from './util';
+import { CONFIG_FILE, EXEC_NAME, printHelp } from './util';
 import fs from 'fs';
 
 const trailingArgumentsError = `
@@ -38,7 +38,7 @@ export function initProject() {
 	}
 
 	if (!path || path === '') {
-		throw new Error('Missing PATH argument. `npx adr init -h` for details.');
+		throw new Error(`Missing PATH argument. \`npx ${EXEC_NAME} init -h\` for details.`);
 	}
 
 	if (hasTrailingArgs) {
