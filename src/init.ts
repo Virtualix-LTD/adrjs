@@ -10,23 +10,41 @@ details.
 This command will now exit.
 `;
 
-export function initProject() {
-	const path = argv[3];
+type InitArgs = {
+	path?: string;
+	showHelp: boolean;
+	hasTrailingArgs: boolean;
+}
 
-	if (path === '-h' || path === '--help') {
+export function _initParseArgv(argv: string[]): InitArgs {
+	const arg3 = argv[3]?.trim();
+	const showHelp = arg3?.toLocaleLowerCase() === '-h' || arg3?.toLocaleLowerCase() === '--help';
+	const hasTrailingArgs = !!argv[4];
+	const path = showHelp ? undefined : (arg3 || 'docs/adr');
+
+	return {
+		path,
+		showHelp,
+		hasTrailingArgs,
+	};
+}
+
+export function initProject() {
+	const { showHelp, hasTrailingArgs, path } = _initParseArgv(argv);
+
+	if (showHelp) {
 		printHelp('init');
+		return;
 	}
 
 	if (!path || path === '') {
-		throw new Error('Missing PATH argument. `npx adr init -h` for details.')
+		throw new Error('Missing PATH argument. `npx adr init -h` for details.');
 	}
 
-	if (argv[4]) {
+	if (hasTrailingArgs) {
 		throw new Error(trailingArgumentsError);
 	}
 
-	// argv.forEach((v,i) => console.log(`${i}: ${v}`))
 	fs.mkdirSync(path, { recursive: true });
 	fs.writeFileSync(CONFIG_FILE, path);
 }
-
