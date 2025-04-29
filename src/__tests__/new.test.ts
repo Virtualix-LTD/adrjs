@@ -76,16 +76,17 @@ describe(getFlags.name, () => {
 
 describe(_createRecord.name, () => {
 	it('should create a record from argv', () => {
+		const now = new Date();
 		const expected: DecisionDocument = {
 			index: 1,
 			title: 'We will do Things with Mixed-Capitals -foo',
 			filename: '0001-we-will-do-things-with-mixedcapitals-foo.md',
 			flags: [],
-			date: new Date(),
+			date: now,
 		};
 
 		const argv = 'We will do Things with Mixed-Capitals -foo'.split(' ');
-		const result = _createRecord(argv, EMPTY_DIR);
+		const result = _createRecord(argv, EMPTY_DIR, now);
 		expect(result).toEqual(expected);
 	});
 });

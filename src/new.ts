@@ -24,7 +24,7 @@ export type DecisionDocument = {
 
 export type PartialDecisionDocument = Pick<DecisionDocument, "title" | "filename" | "index">
 
-export function _createRecord(argv: string[], adrLocation: string): DecisionDocument {
+export function _createRecord(argv: string[], adrLocation: string, date = new Date(Date.now())): DecisionDocument {
 	const index = countRecords(adrLocation) + 1;
 	const { flags, args } = getFlags(argv);
 	const title = args.join(' ');
@@ -35,7 +35,7 @@ export function _createRecord(argv: string[], adrLocation: string): DecisionDocu
 		title,
 		filename,
 		flags,
-		date: new Date(Date.now()),
+		date,
 	};
 }
 
