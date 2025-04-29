@@ -15,8 +15,8 @@ jobs:
           node-version: '20.x'
           registry-url: 'https://registry.npmjs.org'
       - run: yarn install --frozen-lockfile
-      - run: yarn run test
       - run: yarn run build
+      - run: yarn run test
       - run: npm run postversion
       - run: npm publish --provenance --access public
         env:
