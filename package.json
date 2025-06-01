@@ -35,7 +35,7 @@
 		"build": "yarn run clean && tsc"
 	},
 	"engines": {
-		"node": "^20"
+		"node": ">=20"
 	},
 	"files": [
 		"build"
