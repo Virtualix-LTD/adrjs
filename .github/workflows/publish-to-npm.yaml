@@ -1,3 +1,6 @@
+# This workflow requires a manual step. See docs/deploy-to-npm.md
+# See decision 14 on why this is the case.
+
 name: Publish Package to npmjs
 on:
   workflow_dispatch:
