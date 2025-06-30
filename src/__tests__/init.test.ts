@@ -20,7 +20,7 @@ describe(_initParseArgv.name, () => {
 	it('should return a default value for path', () => {
 		const argv: string[] = [];
 
-		expect(_initParseArgv(argv).path).toEqual('docs/adr');
+		expect(_initParseArgv(argv).path).toEqual('doc/adr');
 	});
 
 	it('should trim a given value for a path', () => {
