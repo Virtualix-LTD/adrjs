@@ -85,7 +85,7 @@ export function createRecord(argv: string[]) {
 
 function compileTemplate(index: number, title: string, flags: ChangeFlag[], adrLocation: string, date = new Date()) {
 	return DECISION_TEMPLATE
-		.replace('{{NUMBER}}', formatIndex(index))
+		.replace('{{NUMBER}}', index.toString(10))
 		.replace('{{TITLE}}', title)
 		.replace('{{DATE}}', formatDate(date))
 		.replace('{{AFFECTS}}', compileFlagsTextActiveVoice(flags, adrLocation))
