@@ -4,7 +4,7 @@ Date: {{DATE}}
 
 ## Status
 
-Proposed | Accepted | Superseded
+Accepted
 
 {{AFFECTS}}
 
