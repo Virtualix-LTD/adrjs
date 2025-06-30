@@ -20,7 +20,7 @@ export function _initParseArgv(argv: string[]): InitArgs {
 	const arg3 = argv[3]?.trim();
 	const showHelp = arg3?.toLocaleLowerCase() === '-h' || arg3?.toLocaleLowerCase() === '--help';
 	const hasTrailingArgs = !!argv[4];
-	const path = showHelp ? undefined : (arg3 || 'docs/adr');
+	const path = showHelp ? undefined : (arg3 || 'doc/adr');
 
 	return {
 		path,
