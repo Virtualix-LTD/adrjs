@@ -97,6 +97,10 @@ export function formatDate(date: Date) {
 	return `${date.getFullYear()}-${month}-${day}`;
 }
 
+export function formatIndexInDoc(index: number) {
+	return index.toString(10);
+}
+
 export function formatIndex(index: number) {
 	return `${index}`.padStart(4, '0');
 }

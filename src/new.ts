@@ -4,6 +4,7 @@ import {
 	countRecords,
 	formatDate,
 	formatIndex,
+	formatIndexInDoc,
 	genFileName,
 	getFileContents,
 	getFlags,
@@ -85,7 +86,7 @@ export function createRecord(argv: string[]) {
 
 function compileTemplate(index: number, title: string, flags: ChangeFlag[], adrLocation: string, date = new Date()) {
 	return DECISION_TEMPLATE
-		.replace('{{NUMBER}}', index.toString(10))
+		.replace('{{NUMBER}}', formatIndexInDoc(index))
 		.replace('{{TITLE}}', title)
 		.replace('{{DATE}}', formatDate(date))
 		.replace('{{AFFECTS}}', compileFlagsTextActiveVoice(flags, adrLocation))

@@ -1,6 +1,6 @@
-import { argv } from 'node:process';
-import { CONFIG_FILE, EXEC_NAME, printHelp } from './util';
 import fs from 'fs';
+import { argv } from 'node:process';
+import { CONFIG_FILE, EXEC_NAME, formatDate, formatIndex, formatIndexInDoc, printHelp } from './util';
 
 const trailingArgumentsError = `
 There are trailing arguments at the end of this command.
@@ -9,6 +9,34 @@ details.
 
 This command will now exit.
 `;
+
+const firstDocument = `
+# ${formatIndexInDoc(1)}. We will record architecture decisions
+
+Date: ${formatDate(new Date())}
+
+## Status
+
+Accepted
+
+## Context
+
+We need to record the architectural decisions made on this project.
+
+## Decision
+
+We will use Architecture Decision Records, as described by Michael Nygard in
+this article:
+http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions
+
+## Consequences
+
+See Michael Nygard's article, linked above.
+
+You can use a range of CLI tools to create and manage ADR records:
+* adrjs - \`npx adrjs\`
+* adrtools - https://github.com/npryce/adr-tools
+`
 
 type InitArgs = {
 	path?: string;
@@ -45,6 +73,9 @@ export function initProject() {
 		throw new Error(trailingArgumentsError);
 	}
 
+	const firstDocumentPath=`${path}/${formatIndex(1)}-we-will-record-architecture-decisions.md`;
+
 	fs.mkdirSync(path, { recursive: true });
 	fs.writeFileSync(CONFIG_FILE, path);
+	fs.writeFileSync(firstDocumentPath, firstDocument);
 }
