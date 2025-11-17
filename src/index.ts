@@ -3,7 +3,7 @@ import { COMMANDS, printHelp, printInvalidCommand } from './util';
 import { initProject } from './init';
 import { createRecord } from './new';
 import { getVersion } from './version';
-import { doTOC } from './toc';
+import { doGenerate } from './generate';
 
 const commands: COMMANDS[] = [
 	'init',
@@ -32,8 +32,8 @@ function run() {
 			case 'version':
 				getVersion();
 				break;
-			case 'toc':
-				doTOC();
+			case 'generate':
+				doGenerate(argv);
 				break;
 			default:
 				printInvalidCommand(commands);
