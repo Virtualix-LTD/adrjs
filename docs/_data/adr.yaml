@@ -1,9 +1,9 @@
 - title: We will use the MIT license
-  url: adr/0001-we-will%20use%20the%20mit%20license
+  url: adr/0001-we-will-use-the-mit-license
 - title: We will not use external dependencies as much as possible
-  url: adr/0002-we-will%20not%20use%20external%20dependencies%20as%20much%20as%20possible
+  url: adr/0002-we-will-not-use-external-dependencies-as-much-as-possible
 - title: We will use semantic versioning
-  url: adr/0003-we-will%20use%20semantic%20versioning
+  url: adr/0003-we-will-use-semantic-versioning
 - title: We will use ISO-8601 for dates
   url: adr/0004-we-will-use-iso8601-for-dates
 - title: We will make this tool compatible with the adr-tools interface in v1
@@ -24,3 +24,5 @@
   url: adr/0012-we-will-adopt-the-anticode-code-of-conduct
 - title: We will use docopt to describe our CLI options
   url: adr/0013-we-will-use-docopt-to-describe-our-cli-options
+- title: We will not update the package version from Github Workflows
+  url: adr/0014-we-will-not-update-package-version-from-workflow
