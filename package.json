@@ -43,7 +43,7 @@
 	"private": false,
 	"devDependencies": {
 		"@types/jest": "^29.5.14",
-		"@types/node": "^22.10.5",
+		"@types/node": "^24.10.1",
 		"@virtualix/prettier-config": "^1.0.2",
 		"jest": "^29.7.0",
 		"ts-jest": "^29.2.5",
