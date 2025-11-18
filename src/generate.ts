@@ -50,7 +50,7 @@ export function doTOC(adrLocation: string) {
 	return TOC_TEMPLATE.replace('{{TOC}}', decisions);
 }
 
-export function _doGraphLinkDocs(decisions: Pick<DecisionDocument, "index">[]): string[] {
+export function _doGraphDocsArrows(decisions: Pick<DecisionDocument, "index">[]): string[] {
 	return decisions
 	  .sort(sortdecisions)
 		.splice(1)
@@ -65,17 +65,18 @@ export function _doGraphDocs(decisions: Pick<DecisionDocument, "index" | "filena
 		return docs;
 }
 
+function _doGraphLinks(decisions: Pick<DecisionDocument, "index" | "flags">[]): string[] {
+	return decisions.map(({index, flags})=>flags
+		.map(({flag, index: targetIndex}) => `_${index} -> _${targetIndex} [label="${flag}, weight=0"]`))
+		.flat()
+}
 
 export function _doGraph(decisions: DecisionDocument[]) {
 	const graph=_doGraphDocs(decisions).join("\n").trim();
-	const graphLinks=_doGraphLinkDocs(decisions).join("\n").trim();
+	const graphArrows=_doGraphDocsArrows(decisions).join("\n").trim();
+	const links=_doGraphLinks(decisions).join("\n").trim();
 
-	const links=decisions.map(({index, flags})=>flags
-		.map(({flag, index: targetIndex}) => `_${index} -> _${targetIndex} [label="${flag}, weight=0"]`))
-		.flat()
-		.join("\n").trim();
-
-	return "digraph {\nnode [shape=plaintext];\nsubgraph {\n" + graph + "\n" + graphLinks + "}" + links +"}"
+	return "digraph {\nnode [shape=plaintext];\nsubgraph {\n" + graph + "\n" + graphArrows + "}" + links +"}"
 }
 
 export function doGraph(adrLocation: string) {

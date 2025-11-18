@@ -1,4 +1,4 @@
-import {_doGraph, _doGraphDocs, _doGraphLinkDocs, doGenerate, doGraph, doTOC} from "../generate";
+import {_doGraph, _doGraphDocs, _doGraphDocsArrows, doGenerate, doGraph, doTOC} from "../generate";
 
 const EMPTY_DIR = `${__dirname}/deliberatelyEmptyFolder`;
 const TEST_DIR = `${__dirname}/testAdrDir`;
@@ -33,13 +33,17 @@ describe(doTOC.name, () => {
 
 * 2025-01-07 0001 - [We will use the MIT license](0001-we-will-use-the-mit-license.md)
 * 2025-01-07 0002 - [We will not use external dependencies as much as possible](0002-we-will-not-use-external-dependencies-as-much-as-possible.md)
-* 2025-01-07 0003 - [We will use semantic versioning](0003-we-will-use-semantic-versioning.md)`;
+* 2025-01-07 0003 - [We will use semantic versioning](0003-we-will-use-semantic-versioning.md)
+* 2025-11-18 0004 - [supersedes 1](0004-supersedes-1.md)
+* 2025-11-18 0005 - [Links to second decision](0005-links-to-second-decision.md)
+* 2025-11-18 0006 - [Links to first decision](0006-links-to-first-decision.md)
+* 2025-11-18 0007 - [Links to first decision](0007-links-to-first-decision.md)`;
 
 		expect(result).toEqual(expected);
 	})
 })
 
-describe.only(doGraph.name, () => {
+describe(doGraph.name, () => {
 	it("should generate a graph", () => {
 		const expected=`digraph {
 node [shape=plaintext];
@@ -71,31 +75,31 @@ _6 -> _7 [style="dotted", weight=1];}}`;
 		});
 	})
 
-	describe(_doGraphLinkDocs.name, () => {
+	describe(_doGraphDocsArrows.name, () => {
 		it("should generate an empty array for an empty input", () => {
 			const expected: string[] = [];
-			const result = _doGraphLinkDocs([]);
+			const result = _doGraphDocsArrows([]);
 
 			expect(result).toEqual(expected);
 		})
 
 		it("should generate an empty array for a single entry", () => {
 			const expected: string[] = [];
-			const result = _doGraphLinkDocs([{index: 1}]);
+			const result = _doGraphDocsArrows([{index: 1}]);
 
 			expect(result).toEqual(expected);
 		})
 
 		it("should generate an empty array for a single entry", () => {
 			const expected: string[] = [];
-			const result = _doGraphLinkDocs([{index: 1}]);
+			const result = _doGraphDocsArrows([{index: 1}]);
 
 			expect(result).toEqual(expected);
 		})
 
 		it("should generate a single link for an array of 2 elements", () => {
 			const expected: string[] = ["_1 -> _2 [style=\"dotted\", weight=1];",];
-			const result = _doGraphLinkDocs([{index: 2}, {index: 1}]);
+			const result = _doGraphDocsArrows([{index: 2}, {index: 1}]);
 
 			expect(result.length).toEqual(1);
 			expect(result).toEqual(expected);
@@ -106,7 +110,7 @@ _6 -> _7 [style="dotted", weight=1];}}`;
 				"_1 -> _2 [style=\"dotted\", weight=1];",
 				"_2 -> _3 [style=\"dotted\", weight=1];",
 			];
-			const result = _doGraphLinkDocs([{index: 2}, {index: 1}, {index: 3}]);
+			const result = _doGraphDocsArrows([{index: 2}, {index: 1}, {index: 3}]);
 
 			expect(result.length).toEqual(2);
 			expect(result).toEqual(expected);
