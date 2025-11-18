@@ -6,6 +6,8 @@ Date: 2025-01-07
 
 Accepted
 
+2 [5. Links to second decision](0005-links-to-second-decision.md)
+
 ## Context
 We often have to decide between writing code ourselves and using an external
 package. This package is meant to be distributed, and as such the size must be
