@@ -1,3 +1,5 @@
+export const defaultInitDir = "doc/adr";
+
 export const DECISION_TEMPLATE = `# {{NUMBER}}. {{TITLE}}
 
 Date: {{DATE}}
@@ -19,8 +21,12 @@ What becomes easier or more difficult to do and any risks introduced by the chan
 `;
 
 export const initText = `
-Usage: adrjs init ([-h | <path>)
+Usage: adrjs init [-h] [<path>]
 
+path:	Optional - specify the path where  the decisions will
+			be stored. Defaults to ${defaultInitDir}
+
+Options:
 -h  Show this screen.
 `.trim();
 
@@ -34,6 +40,16 @@ Usage: adrjs new [options] DECISION-TITLE
 -s INDEX, --supersede, supersedes  Marks decision INDEX as superseded by this
                                    decision. Marks this decision as superseding
                                    decision INDEX.
+`.trim();
+
+export const generateText = `
+Usage: adrjs generate (toc|graph)
+
+Commands:
+toc:		Generate a table of contents from your architecture
+				decisions to stdout.
+graph:	Generate a graphviz representation of your architecture
+				decisions to stdout.
 `.trim();
 
 export const TOC_TEMPLATE=`

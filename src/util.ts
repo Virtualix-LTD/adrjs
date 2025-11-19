@@ -1,8 +1,8 @@
 import fs from 'fs';
-import { defaultText, initText, newText, versionText } from './templates';
+import { defaultText, generateText, initText, newText, versionText } from './templates';
 import { DecisionDocument } from './new';
 
-export type COMMANDS = 'init' | 'new' | 'version';
+export type COMMANDS = 'init' | 'new' | 'version' | 'generate';
 
 export const CONFIG_FILE = '.adr-dir';
 
@@ -24,6 +24,9 @@ export function printHelp(page: COMMANDS | string) {
 			return;
 		case 'version':
 			console.log(versionText);
+			return;
+		case 'generate':
+			console.log(generateText);
 			return;
 		default:
 			console.log(defaultText);
