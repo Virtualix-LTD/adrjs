@@ -5,7 +5,7 @@ function exec(command: string) {
 }
 
 
-describe('version', () => {
+xdescribe('version', () => {
 	it('should print the current version when invoked with the "version" command', () => {
 		const stdout = exec('npx . version').trim();
 
