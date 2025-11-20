@@ -6,6 +6,8 @@ Date: 2025-01-07
 
 Accepted
 
+* Superseded By [0009 - supercedes the third decision](0009-supercedes-the-third-decision.md)
+
 ## Context
 We need to communicate the latest version and a version history to our users.
 

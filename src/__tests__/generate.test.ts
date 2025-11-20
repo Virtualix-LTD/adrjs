@@ -37,7 +37,10 @@ describe(doTOC.name, () => {
 * 2025-11-18 0004 - [supersedes 1](0004-supersedes-1.md)
 * 2025-11-18 0005 - [Links to second decision](0005-links-to-second-decision.md)
 * 2025-11-18 0006 - [Links to first decision](0006-links-to-first-decision.md)
-* 2025-11-18 0007 - [Links to first decision](0007-links-to-first-decision.md)`;
+* 2025-11-18 0007 - [Links to first decision](0007-links-to-first-decision.md)
+* 2025-11-20 0008 - [-l 1 links to the first decision](0008-l-1-links-to-the-first-decision.md)
+* 2025-11-20 0009 - [supercedes the third decision](0009-supercedes-the-third-decision.md)
+* 2025-11-20 0010 - [amends the fourth decision](0010-amends-the-fourth-decision.md)`;
 
 		expect(result).toEqual(expected);
 	})
@@ -55,12 +58,20 @@ _4 [label="supersedes 1"; URL="0004-supersedes-1.md"];
 _5 [label="Links to second decision"; URL="0005-links-to-second-decision.md"];
 _6 [label="Links to first decision"; URL="0006-links-to-first-decision.md"];
 _7 [label="Links to first decision"; URL="0007-links-to-first-decision.md"];
+_8 [label="-l 1 links to the first decision"; URL="0008-l-1-links-to-the-first-decision.md"];
+_9 [label="supercedes the third decision"; URL="0009-supercedes-the-third-decision.md"];
+_10 [label="amends the fourth decision"; URL="0010-amends-the-fourth-decision.md"];
 _1 -> _2 [style="dotted", weight=1];
 _2 -> _3 [style="dotted", weight=1];
 _3 -> _4 [style="dotted", weight=1];
 _4 -> _5 [style="dotted", weight=1];
 _5 -> _6 [style="dotted", weight=1];
-_6 -> _7 [style="dotted", weight=1];}}`;
+_6 -> _7 [style="dotted", weight=1];
+_7 -> _8 [style="dotted", weight=1];
+_8 -> _9 [style="dotted", weight=1];
+_9 -> _10 [style="dotted", weight=1];}
+_9 -> _3 [label="supersedes", weight="0"]
+_10 -> _4 [label="amends", weight="0"]}`;
 		const result = doGraph(TEST_DIR);
 
 		expect(result).toEqual(expected);
