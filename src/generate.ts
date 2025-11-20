@@ -30,6 +30,7 @@ export function doGenerate(argv: string[]) {
 
 		case "graph":
 			console.log(doGraph(readFolderLocation()));
+			break;
 		default:
 			throw new Error(`Not recognised: [${type}]\n\n${commandHelp}`)
 	}
