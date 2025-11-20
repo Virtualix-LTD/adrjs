@@ -52,8 +52,7 @@ export function doTOC(adrLocation: string) {
 }
 
 export function _doGraphDocsArrows(decisions: Pick<DecisionDocument, "index">[]): string[] {
-	return decisions
-	  .sort(sortdecisions)
+	return [...decisions.sort(sortdecisions)]
 		.splice(1)
 		.map(({index}) => `_${index - 1} -> _${index} [style="dotted", weight=1];`)
 }
@@ -68,7 +67,7 @@ export function _doGraphDocs(decisions: Pick<DecisionDocument, "index" | "filena
 
 function _doGraphLinks(decisions: Pick<DecisionDocument, "index" | "flags">[]): string[] {
 	return decisions.map(({index, flags})=>flags
-		.map(({flag, index: targetIndex}) => `_${index} -> _${targetIndex} [label="${flag}, weight=0"]`))
+		.map(({flag, index: targetIndex}) => `_${index} -> _${targetIndex} [label="${flag}s", weight="0"]`))
 		.flat()
 }
 
@@ -77,7 +76,7 @@ export function _doGraph(decisions: DecisionDocument[]) {
 	const graphArrows=_doGraphDocsArrows(decisions).join("\n").trim();
 	const links=_doGraphLinks(decisions).join("\n").trim();
 
-	return "digraph {\nnode [shape=plaintext];\nsubgraph {\n" + graph + "\n" + graphArrows + "}" + links +"}"
+	return "digraph {\nnode [shape=plaintext];\nsubgraph {\n" + graph + "\n" + graphArrows + "}" + (links ? "\n"+links : "" )+"}"
 }
 
 export function doGraph(adrLocation: string) {
