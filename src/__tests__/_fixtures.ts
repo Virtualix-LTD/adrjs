@@ -27,6 +27,27 @@ We are backwards-compatible with existing users of adr-tools.
 [1]: https://github.com/npryce/adr-tools
 `;
 
+export const renderedDecisionSupercedes=`
+# 10. amends the fourth decision
+
+Date: 2025-11-20
+
+## Status
+
+Accepted
+
+* Amends [0004 - supersedes 1](0004-supersedes-1.md)
+
+## Context
+The issue motivating this decision, and any context that influences or constrains the decision.
+
+## Decision
+The change that we're proposing or have agreed to implement.
+
+## Consequences
+What becomes easier or more difficult to do and any risks introduced by the change that will need to be mitigated.
+`.trim();
+
 // See https://symbl.cc/en/unicode/blocks
 // Use https://symbl.cc/en/tools/generator/ to generate blocks
 

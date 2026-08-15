@@ -45,8 +45,7 @@ function getDecisionByIndex(index: number, adrLocation: string): DecisionDocumen
 	const file = fs.readdirSync(adrLocation).find(location => location.indexOf(formattedIndex) === 0);
 
 	if (!file) {
-		console.error(`Cannot find decision number ${formattedIndex}. Exiting.`);
-		process.exit(1);
+		throw new Error(`Cannot find decision number [${formattedIndex}].`);
 	}
 
 	const contents = fs.readFileSync(`${adrLocation}/${file}`, { encoding: 'utf-8' });

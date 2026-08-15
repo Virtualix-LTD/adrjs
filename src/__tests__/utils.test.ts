@@ -1,5 +1,6 @@
+import { DecisionDocument } from '../new';
 import { _getFilePaths, genFileName, getMetadataFromContent } from '../util';
-import { renderedDecision } from './_fixtures';
+import { renderedDecision, renderedDecisionSupercedes } from './_fixtures';
 
 describe(genFileName.name, () => {
 	it('should replace spaces with dashes and lowercase', () => {
@@ -43,6 +44,22 @@ describe(getMetadataFromContent, () => {
 		const result = getMetadataFromContent(renderedDecision);
 		expect(result).toEqual(expected);
 	});
+
+	it("should extract metadata and links to other decisions", () => {
+		const expected: Pick<DecisionDocument, "index" | "title" | "date" | "flags">= {
+			title:"amends the fourth decision",
+			index: 10,
+			date: new Date('2025-11-20'),
+			flags: [
+				{
+					flag: 'amend',
+					index: 4,
+				}
+			],
+		};
+		const result = getMetadataFromContent(renderedDecisionSupercedes);
+		expect(result).toEqual(expected);
+	})
 });
 
 describe(_getFilePaths.name, () => {

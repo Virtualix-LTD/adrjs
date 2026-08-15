@@ -1,8 +1,8 @@
 import fs from 'fs';
-import { defaultText, initText, newText, versionText } from './templates';
+import { defaultText, generateText, initText, newText, versionText } from './templates';
 import { DecisionDocument } from './new';
 
-export type COMMANDS = 'init' | 'new' | 'version';
+export type COMMANDS = 'init' | 'new' | 'version' | 'generate';
 
 export const CONFIG_FILE = '.adr-dir';
 
@@ -24,6 +24,9 @@ export function printHelp(page: COMMANDS | string) {
 			return;
 		case 'version':
 			console.log(versionText);
+			return;
+		case 'generate':
+			console.log(generateText);
 			return;
 		default:
 			console.log(defaultText);
@@ -138,14 +141,26 @@ export function getMetadataFromFile(filename: string, location = readFolderLocat
 	};
 }
 
+function getIndexFromFilename(filename: string): number {
+	return parseInt(filename.split("-")[0]);
+}
+
 export function getMetadataFromContent(content: string): Pick<DecisionDocument, 'index' | 'title' | 'date' | 'flags'> {
 	const match = /#\s*(\d+)\. (.*)\s*Date:\s+(\d{4}-\d{2}-\d{2})/gm.exec(content);
+	const linksRegex=/(?<type>amends|supercedes|supersedes)\s*\[(?<title>[\w\d\-\s]+)\]\((?<filename>[\w\d\-]+.md)\)/gmi;
+
 	if (!match) {
 		throw new Error('Cannot find match');
 	}
 
 	const [_, index, title, date] = match;
-	return { index: Number(index), title, date: new Date(date), flags: [] };
+	const flags: ChangeFlag[] = [...content.matchAll(linksRegex)]
+		.map<ChangeFlag>(({groups}) => ({
+			flag: groups?.type?.toLocaleLowerCase().indexOf("a") === 0 ? "amend" : "supersede",
+			index: getIndexFromFilename(groups?.filename || "")
+		}));
+
+	return { index: Number(index), title, date: new Date(date), flags };
 }
 
 export function getFileContents(filename: string, folder: string): string {
